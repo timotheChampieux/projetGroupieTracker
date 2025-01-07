@@ -5,28 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/static/accueil.css">
-    <title>Document</title>
+    <title>Page d'accueil</title>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1 class="title">Pokemon</h1> 
+            <h1 class="title">Pokémon</h1> 
             <div class="logo">
-                <img src="static/Pokeball.png" alt="pokemon" class="pokeball">
+                <img src="/static/Pokeball.png" alt="Logo Pokémon" class="pokeball">
             </div>       
         </div>
         
         <div class="content">
             <div class="menu">
                 <ul>
-                    <li><a href="#">Rechercher un pokemon</a></li>
-                    <li><a href="#">Attraper un pokemon</a></li>
-                    <li><a href="#">Pokedex</a></li>
+                    <li><a href="#">Rechercher un Pokémon</a></li>
+                    <li><a href="#">Attraper un Pokémon</a></li>
+                    <li><a href="#">Pokédex</a></li>
                 </ul>
             </div>
         </div>
+        {{.}}
         <div class="footer">
-            <p>A propos</p>
+            <p>À propos</p>
         </div>
     </div>
 </body>

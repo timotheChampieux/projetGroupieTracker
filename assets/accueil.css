@@ -4,26 +4,61 @@ body {
     margin: 0;
     padding: 0;
     background-image: url(http://localhost:8080/static/fond.webp);
+    background-size: cover; /* L'image couvre tout l'écran */
+    background-position: center; /* Centrer l'image */
+    background-attachment: fixed; /* L'image reste fixe pendant le scroll */
+    height: 100vh; /* Assure une hauteur de 100% de l'écran */
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between; /* Titre à gauche et pokeball à droite */
+    align-items: flex-start; /* Aligne le contenu en haut */
+    padding: 20px;
+}
+
+.title {
+    font-size: 2rem;
+    margin: 0;
 }
 
 .pokeball {
-    display : flex;
-    justify-content: right;
-    align-items: right;
     width: 50px;
     height: auto;
 }
 
-.header {
+.content {
     display: flex;
-;
-    align-items: right;
-  
-    margin-right: 50px;
-  
-    
+    justify-content: flex-end; /* Place le menu à droite */
+    align-items: center; /* Centre verticalement le menu */
+    height: calc(100vh - 200px); /* Ajuste la hauteur pour exclure l'espace du header et du footer */
+    padding-right: 50px;
 }
 
-.title {
-    justify-content: center;
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Les éléments sont empilés verticalement */
+    gap: 15px; /* Espacement entre les éléments du menu */
 }
+
+.menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.menu ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer {
+    text-align: right; /* Aligne le texte vers la droite */
+    margin-right: 25%; /* Décale le texte vers le centre en partant du bord droit */
+    padding: 10px 0;
+    color: white;
+}
+
