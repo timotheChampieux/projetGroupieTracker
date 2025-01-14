@@ -28,7 +28,7 @@ func RecherchePokemon(pokemon string) (Pokemon, error) {
 	urlApi := "https://api.pokemontcg.io/v2/cards?q=name:" + pokemon
 
 	httpClient := http.Client{
-		Timeout: time.Second * 5,
+		Timeout: time.Second * 15,
 	}
 
 	req, errReq := http.NewRequest(http.MethodGet, urlApi, nil)

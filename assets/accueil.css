@@ -62,3 +62,53 @@ body {
     color: white;
 }
 
+/* Barre de recherche */
+/* Barre de recherche */
+.search-bar {
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    height: 50vh; /* Barre centrée verticalement */
+}
+
+.search-bar input {
+    width: 50%; /* Réduire la largeur */
+    max-width: 500px; /* Largeur maximale */
+    padding: 20px; /* Hauteur de la barre de recherche */
+    font-size: 1.1rem; /* Taille du texte */
+    border: 2px solid #ddd; /* Bord gris clair */
+    border-radius: 20px; /* Coins arrondis */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre subtile */
+    transition: all 0.3s ease; /* Transition douce */
+    outline: none; /* Enlève le contour par défaut */
+}
+
+.search-bar input::placeholder {
+    color: #aaa; /* Couleur du texte du placeholder */
+    font-style: italic; /* Texte en italique */
+}
+
+.search-bar input:focus {
+    border-color: #007bff; /* Couleur du bord au focus */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Effet lumineux au focus */
+}
+
+.search-bar button {
+    padding: 20px; /* Hauteur du bouton */
+    margin-left: 10px; /* Marge à gauche */
+    background-color: #007bff; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    border: none; /* Pas de bord */
+    border-radius: 20px; /* Coins arrondis */
+    cursor: pointer; /* Curseur pointer */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre subtile */
+    transition: all 0.3s ease; /* Transition douce */
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    width: 100%;
+  }
