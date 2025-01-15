@@ -1,0 +1,33 @@
+{{define "rechercher"}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/accueil.css">
+    <title>Page d'accueil</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Pokémon</h1> 
+            <div class="logo">
+                <a href="/accueil"><img src="/static/Pokeball.png" alt="Logo Pokémon" class="pokeball"></a>
+            </div>       
+        </div>
+
+       <div class="wrapper">
+        {{if .Data}}
+            {{range .Data}}
+                <div >
+                    <img src="{{.Images.Small}}" alt="{{.Name}}">
+                        <p>{{.Name}}</p>
+                        <p>{{.Rarity}}</p>
+                </div>
+            {{end}}
+        {{end}}
+       </div>
+    </div>
+</body>
+</html>
+{{end}}

@@ -1,4 +1,4 @@
-{{define "accueil"}}
+{{define "set"}}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,20 +12,23 @@
         <div class="header">
             <h1 class="title">Pokémon</h1> 
             <div class="logo">
-                <img src="/static/Pokeball.png" alt="Logo Pokémon" class="pokeball">
+                <a href="/accueil"><img src="/static/Pokeball.png" alt="Logo Pokémon" class="pokeball"></a>
             </div>       
         </div>
         
-        <div class="content">
-            <div class="menu">
-                <ul>
-                    <li><a href="/rechercher">Rechercher un Pokémon</a></li>
-                    <li><a href="/set">Tout les set Pokemon !</a></li>
-                    <li><a href="#">Pokédex</a></li>
-                </ul>
-            </div>
+        <div class="contentset">
+          <div class ="wrapperSet">
+            {{if .Data}}
+                {{range .Data}}
+                    <div class="set">
+                        <img src="{{.Images.Logo}}" alt="{{.Name}}" id="imageSet">
+                        <p>{{.Name}}</p>
+                        <p>{{.ReleaseDate}}</p>
+                    </div>
+                {{end}}
+            {{end}}
+          </div>
         </div>
-        {{.}}
         <div class="footer">
             <p>À propos</p>
         </div>

@@ -10,6 +10,8 @@ func InitServ() {
 	http.Handle("/static/", http.StripPrefix("/static/", fileServer))
 	accueilRoutes()
 	rechercherRoutes()
+	setRoutes()
+	test()
 	fmt.Println("Serveur démarré sur http://localhost:8080/accueil")
 	http.ListenAndServe(":8080", nil)
 }
