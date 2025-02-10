@@ -21,7 +21,7 @@
             {{if .Data}}
                 {{range .Data}}
                     <div class="set">
-                        <img src="{{.Images.Logo}}" alt="{{.Name}}" id="imageSet">
+                        <a href="/set/cards?id={{.Id}}&name={{.Name}}"><img src="{{.Images.Logo}}" alt="{{.Name}}" id="imageSet"></a>
                         <p>{{.Name}}</p>
                         <p>{{.ReleaseDate}}</p>
                     </div>

@@ -12,7 +12,7 @@ var (
 )
 
 func accueilRoutes() {
-	http.HandleFunc("/accueil", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		templates.Temp.ExecuteTemplate(w, "accueil", nil)
 	})
 
@@ -47,13 +47,18 @@ func setRoutes() {
 	})
 }
 
-func test() {
-	http.HandleFunc("/test", func(w http.ResponseWriter, r *http.Request) {
-		list, err := services.GetCardsBySet("swsh1")
+func CardsBySetRoutes() {
+	http.HandleFunc("/set/cards", func(w http.ResponseWriter, r *http.Request) {
+		id := r.FormValue("id")
+		name := r.FormValue("name")
+		fmt.Println(id, name)
+		list, err := services.GetCardsBySet(id)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
-		fmt.Fprintf(w, "%v", list)
+		fmt.Println(list)
+		templates.Temp.ExecuteTemplate(w, "cardset", list)
 	})
+
 }

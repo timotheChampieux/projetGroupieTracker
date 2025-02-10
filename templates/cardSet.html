@@ -1,4 +1,4 @@
-{{define "rechercher"}}
+{{define "cardset"}}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -17,15 +17,13 @@
         </div>
 
        <div class="wrapper">
-        {{if .Data}}
-            {{range .Data}}
+            {{range .}}
                 <div >
-                    <img src="{{.Images.Small}}" alt="{{.Name}}">
-                        <p>{{.Name}}</p>
-                        <p>{{.Rarity}}</p>
+                    <img src="{{.Data.Images.Small}}" alt="{{.Data.Name}}">
+                        <p>{{.Data.Name}}</p>
+                        <p>{{.Data.Rarity}}</p>
                 </div>
             {{end}}
-        {{end}}
        </div>
     </div>
 </body>
