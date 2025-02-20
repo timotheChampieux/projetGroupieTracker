@@ -8,7 +8,7 @@
     <title>Page d'accueil</title>
 </head>
 <body>
-    <div class="container">
+    
         <div class="header">
             <h1 class="title">Pokémon</h1> 
             <div class="logo">
@@ -19,15 +19,25 @@
 
         <div class="search-bar">
             <form id="recherche" action="/rechercher" method="GET">
-                <input type="text" placeholder="Rechercher un Pokémon" name="query" required/>
+                <input type="text" placeholder="Rechercher un Pokémon" name="query"  value="" required/>
+                <label><input type="number" name="min-hp"> Hp min</label>
                 <button type="submit" >valider</button> 
             </form>
-        </div>
 
+            <div class="filter-container">
+                <button class="filter-button" onclick="toggleFilter()">Filtrer</button>
+                <div id="filter-menu" class="filter-menu">
+                    
+                        <label><input type="checkbox"> Option 2</label>
+                        <label><input type="checkbox"> Option 3</label>
+                        <button class="filter-button">Appliquer</button>
+                </div>
+            </div>
+        </div>  
        <div class="wrapper">
         {{if .Data}}
             {{range .Data}}
-                <div >
+                <div class="carte" >
                     <img src="{{.Images.Small}}" alt="{{.Name}}">
                         <p>{{.Name}}</p>
                         <p>{{.Rarity}}</p>
@@ -35,7 +45,11 @@
             {{end}}
         {{end}}
        </div>
-    </div>
+       <script>
+        function toggleFilter() {
+          document.getElementById("filter-menu").classList.toggle("show");
+        }
+      </script>
 </body>
 </html>
 {{end}}

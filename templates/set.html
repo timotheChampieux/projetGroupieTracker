@@ -8,19 +8,19 @@
     <title>Page d'accueil</title>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
+
+    <div class="header">
             <h1 class="title">Pokémon</h1> 
             <div class="logo">
                 <a href="/accueil"><img src="/static/Pokeball.png" alt="Logo Pokémon" class="pokeball"></a>
             </div>       
-        </div>
+    </div>
         
-        <div class="contentset">
-          <div class ="wrapperSet">
+        
+          <div class ="wrapper">
             {{if .Data}}
                 {{range .Data}}
-                    <div class="set">
+                    <div class="carte">
                         <a href="/set/cards?id={{.Id}}&name={{.Name}}"><img src="{{.Images.Logo}}" alt="{{.Name}}" id="imageSet"></a>
                         <p>{{.Name}}</p>
                         <p>{{.ReleaseDate}}</p>
@@ -28,11 +28,11 @@
                 {{end}}
             {{end}}
           </div>
-        </div>
+       
         <div class="footer">
             <p>À propos</p>
         </div>
-    </div>
+    
 </body>
 </html>
 {{end}}

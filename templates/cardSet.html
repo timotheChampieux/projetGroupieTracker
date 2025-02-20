@@ -8,24 +8,27 @@
     <title>Page d'accueil</title>
 </head>
 <body>
-    <div class="container">
+   
         <div class="header">
             <h1 class="title">Pokémon</h1> 
             <div class="logo">
                 <a href="/accueil"><img src="/static/Pokeball.png" alt="Logo Pokémon" class="pokeball"></a>
-            </div>       
-        </div>
+            </div>     
 
+        </div>
+        <div class = "nomset">
+            <h2>{{.Name}}</h2>
+        </div>
        <div class="wrapper">
-            {{range .}}
-                <div >
+            {{range .Data}}
+                <div class="carte" >
                     <img src="{{.Data.Images.Small}}" alt="{{.Data.Name}}">
                         <p>{{.Data.Name}}</p>
                         <p>{{.Data.Rarity}}</p>
                 </div>
             {{end}}
        </div>
-    </div>
+   
 </body>
 </html>
 {{end}}

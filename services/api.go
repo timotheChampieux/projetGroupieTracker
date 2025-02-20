@@ -35,6 +35,11 @@ type CardPokemon struct {
 	} `json:"data"`
 }
 
+type CardPokemonFinal struct {
+	Name string
+	Data []CardPokemon
+}
+
 type Set struct {
 	Data []struct {
 		Id          string `json:"id"`
