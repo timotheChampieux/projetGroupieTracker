@@ -64,14 +64,18 @@ body {
 
 /* Barre de recherche */
 /* Barre de recherche */
-.search-bar {
+
+
+
+#recherche{
     display: flex;
-    justify-content: center; /* Centrer horizontalement */
-    align-items: center; /* Centrer verticalement */
+    align-items: center;
+    justify-content: center;
+    width: 100%;
     height: 50vh; /* Barre centrée verticalement */
 }
 
-.search-bar input {
+.rech {
     width: 50%; /* Réduire la largeur */
     max-width: 500px; /* Largeur maximale */
     padding: 20px; /* Hauteur de la barre de recherche */
@@ -82,6 +86,21 @@ body {
     transition: all 0.3s ease; /* Transition douce */
     outline: none; /* Enlève le contour par défaut */
 }
+
+
+.filtre {
+    width: 7%; /* Réduire la largeur */
+    max-width: 500px; /* Largeur maximale */
+    padding: 20px; /* Hauteur de la barre de recherche */
+    font-size: 1.1rem; /* Taille du texte */
+    border: 2px solid #ddd; /* Bord gris clair */
+    border-radius: 20px; /* Coins arrondis */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre subtile */
+    transition: all 0.3s ease; /* Transition douce */
+    outline: none; /* Enlève le contour par défaut */
+}
+
+
 
 .search-bar input::placeholder {
     color: #aaa; /* Couleur du texte du placeholder */
@@ -114,6 +133,16 @@ body {
     gap: 10px;
     
   }
+
+  .wrapperSet {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Affiche 4 éléments par ligne */
+    gap: 15px; /* Espace entre les éléments */
+    padding: 10px; /* Ajouter un peu de marge intérieure */
+    width: 100%; /* Assurer que le wrapper occupe toute la largeur */
+    
+    
+}
 
 .carte img {
     width: 100%;

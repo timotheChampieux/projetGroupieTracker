@@ -4,6 +4,7 @@ import (
 	"GroupieTracker/services"
 	"GroupieTracker/templates"
 	"fmt"
+	"math"
 	"net/http"
 	"strconv"
 )
@@ -26,35 +27,65 @@ func rechercherRoutes() {
 		var dataTemp services.Pokemon
 		query := r.FormValue("query")
 		minHp := r.FormValue("min-hp")
-		fmt.Println(minHp, query)
+		maxHp := r.FormValue("max-hp")
+		fmt.Println(minHp, maxHp, query)
 
-		var err error
-		data, err = services.RecherchePokemon(query)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-
-		minHpInt, err := strconv.Atoi(minHp)
-		if err == nil && minHp != "" {
-			for _, item := range data.Data {
-				hpItemInt, hpErr := strconv.Atoi(item.Hp)
-				if hpErr != nil {
-					http.Error(w, err.Error(), http.StatusInternalServerError)
-					return
-				}
-				fmt.Println(hpItemInt, minHpInt)
-				if hpItemInt >= minHpInt {
-
-					dataTemp.Data = append(dataTemp.Data, item)
-				}
+		if query != "" {
+			var err error
+			data, err = services.RecherchePokemon(query)
+			if err != nil {
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
 			}
-		} else {
 
-			dataTemp = data
-		}
-		for _, item := range data.Data {
-			fmt.Println(item)
+			minHpInt, errMin := strconv.Atoi(minHp)
+			maxHpInt, errMax := strconv.Atoi(maxHp)
+			fmt.Println(minHpInt, maxHpInt, err)
+			fmt.Println(err == nil && minHp != "" && maxHp == "")
+			fmt.Println(err == nil && minHp == "" && maxHp != "")
+			fmt.Println(err == nil && minHp != "" && maxHp != "")
+			if errMin == nil && minHp != "" && maxHp == "" {
+				for _, item := range data.Data {
+					hpItemInt, hpErr := strconv.Atoi(item.Hp)
+					if hpErr != nil {
+						fmt.Println(hpErr)
+					}
+					fmt.Println(hpItemInt, minHpInt)
+					if hpItemInt >= minHpInt {
+
+						dataTemp.Data = append(dataTemp.Data, item)
+					}
+				}
+			} else if errMax == nil && minHp == "" && maxHp != "" {
+				fmt.Print(1)
+				for _, item := range data.Data {
+					hpItemInt, hpErr := strconv.Atoi(item.Hp)
+					if hpErr != nil {
+						fmt.Println(hpErr)
+					}
+					fmt.Println(hpItemInt, maxHpInt)
+					if hpItemInt <= maxHpInt {
+
+						dataTemp.Data = append(dataTemp.Data, item)
+					}
+				}
+
+			} else if errMin == nil && errMax == nil && minHp != "" && maxHp != "" {
+				for _, item := range data.Data {
+					hpItemInt, hpErr := strconv.Atoi(item.Hp)
+					if hpErr != nil {
+						fmt.Println(hpErr)
+					}
+					fmt.Println(hpItemInt, maxHpInt)
+					if hpItemInt <= maxHpInt && hpItemInt >= minHpInt {
+
+						dataTemp.Data = append(dataTemp.Data, item)
+					}
+				}
+			} else {
+				fmt.Print(2)
+				dataTemp = data
+			}
 		}
 		templates.Temp.ExecuteTemplate(w, "rechercher", dataTemp)
 	})
@@ -62,13 +93,39 @@ func rechercherRoutes() {
 
 func setRoutes() {
 	http.HandleFunc("/set", func(w http.ResponseWriter, r *http.Request) {
+		var data services.SetPage
 		sets, err := services.GetSet()
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
 
-		templates.Temp.ExecuteTemplate(w, "set", sets)
+		taille := len(sets.Data)
+		data.NbrPage = int(math.Ceil(float64(taille) / float64(8))) // division arrondie a l'entier supp
+
+		page, _ := strconv.Atoi(r.URL.Query().Get("page"))
+		if page < 1 {
+			page = 1
+		} else if page > data.NbrPage {
+			page = data.NbrPage
+		}
+
+		data.PageAct = page
+
+		data.PrevPage = page - 1
+		data.NextPage = page + 1
+		data.ShowPrev = page > 1
+		data.ShowNext = page < data.NbrPage
+
+		index := data.PageAct*8 - 8
+
+		for i := 0; i < 8; i++ {
+
+			data.Set.Data = append(data.Set.Data, sets.Data[index])
+			index++
+		}
+
+		templates.Temp.ExecuteTemplate(w, "set", data)
 	})
 }
 

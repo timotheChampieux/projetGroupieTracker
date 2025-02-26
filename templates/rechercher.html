@@ -19,21 +19,14 @@
 
         <div class="search-bar">
             <form id="recherche" action="/rechercher" method="GET">
-                <input type="text" placeholder="Rechercher un Pokémon" name="query"  value="" required/>
-                <label><input type="number" name="min-hp"> Hp min</label>
+                <input type="text" class = "rech" placeholder="Rechercher un Pokémon" name="query"  value="" required/>
+                <input type="number" class = "filtre" name="min-hp" placeholder="Hp min">
+                <input type="number" class = "filtre" name="max-hp" placeholder="Hp max">
                 <button type="submit" >valider</button> 
             </form>
-
-            <div class="filter-container">
-                <button class="filter-button" onclick="toggleFilter()">Filtrer</button>
-                <div id="filter-menu" class="filter-menu">
-                    
-                        <label><input type="checkbox"> Option 2</label>
-                        <label><input type="checkbox"> Option 3</label>
-                        <button class="filter-button">Appliquer</button>
-                </div>
-            </div>
-        </div>  
+        </div>
+        
+        
        <div class="wrapper">
         {{if .Data}}
             {{range .Data}}
@@ -45,11 +38,7 @@
             {{end}}
         {{end}}
        </div>
-       <script>
-        function toggleFilter() {
-          document.getElementById("filter-menu").classList.toggle("show");
-        }
-      </script>
+       
 </body>
 </html>
 {{end}}

@@ -51,6 +51,16 @@ type Set struct {
 	} `json:"data"`
 }
 
+type SetPage struct {
+	PageAct  int
+	NbrPage  int
+	PrevPage int
+	NextPage int
+	ShowPrev bool
+	ShowNext bool
+	Set      Set
+}
+
 var _token string = "0f0a0dd2-300f-4af3-9c5b-4bdb8270e451"
 
 func RecherchePokemon(pokemon string) (Pokemon, error) {

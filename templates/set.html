@@ -15,11 +15,12 @@
                 <a href="/accueil"><img src="/static/Pokeball.png" alt="Logo Pokémon" class="pokeball"></a>
             </div>       
     </div>
+    
+   
         
-        
-          <div class ="wrapper">
-            {{if .Data}}
-                {{range .Data}}
+    <div class ="wrapperSet">
+            {{if .Set.Data}}
+                {{range .Set.Data}}
                     <div class="carte">
                         <a href="/set/cards?id={{.Id}}&name={{.Name}}"><img src="{{.Images.Logo}}" alt="{{.Name}}" id="imageSet"></a>
                         <p>{{.Name}}</p>
@@ -27,11 +28,20 @@
                     </div>
                 {{end}}
             {{end}}
-          </div>
+    </div>
+
+    {{if .ShowPrev}}
+    <a href="/set?page={{.PrevPage}}">Précédent</a>
+{{end}}
+
+{{if .ShowNext}}
+    <a href="/set?page={{.NextPage}}">Suivant</a>
+{{end}}
+   
        
-        <div class="footer">
-            <p>À propos</p>
-        </div>
+    <div class="footer">
+        <p>À propos</p>
+    </div>
     
 </body>
 </html>
