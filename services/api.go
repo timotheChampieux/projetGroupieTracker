@@ -13,9 +13,12 @@ type Pokemon struct {
 		Name     string   `json:"name"`
 		Subtypes []string `json:"subtypes"`
 		Hp       string   `json:"hp"`
-		Types    []string `json:"types"`
-		Rarity   string   `json:"rarity"`
-		Images   struct {
+		Attacks  []struct {
+			Damage string `json:"damage"`
+		} `json:"attacks"`
+		Types  []string `json:"types"`
+		Rarity string   `json:"rarity"`
+		Images struct {
 			Small string `json:"small"`
 		} `json:"images"`
 	} `json:"data"`

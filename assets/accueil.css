@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Press Start 2P', sans-serif;
     color: white;
     margin: 0;
     padding: 0;
@@ -8,6 +10,7 @@ body {
     background-position: center; /* Centrer l'image */
     background-attachment: fixed; /* L'image reste fixe pendant le scroll */
     height: 100vh; /* Assure une hauteur de 100% de l'écran */
+    
 }
 
 
@@ -196,3 +199,22 @@ body {
   .show {
     display: block;
   }
+
+  .nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.nav-buttons a {
+    padding: 10px 20px;
+    background-color: #FFCC00;
+    color: #333;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.nav-buttons a:hover {
+    background-color: #FFA500;
+}

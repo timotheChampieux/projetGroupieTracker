@@ -30,13 +30,16 @@
             {{end}}
     </div>
 
-    {{if .ShowPrev}}
-    <a href="/set?page={{.PrevPage}}">Précédent</a>
-{{end}}
+    <div class="nav-buttons">
+        {{if .ShowPrev}}
+            <a href="/set?page={{.PrevPage}}">Précédent</a>
+        {{end}}
 
-{{if .ShowNext}}
-    <a href="/set?page={{.NextPage}}">Suivant</a>
-{{end}}
+        {{if .ShowNext}}
+            <a href="/set?page={{.NextPage}}">Suivant</a>
+        {{end}}
+    </div>
+       
    
        
     <div class="footer">

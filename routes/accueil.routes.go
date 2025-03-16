@@ -28,6 +28,7 @@ func rechercherRoutes() {
 		query := r.FormValue("query")
 		minHp := r.FormValue("min-hp")
 		maxHp := r.FormValue("max-hp")
+		degMin := r.FormValue("deg-min")
 		fmt.Println(minHp, maxHp, query)
 
 		if query != "" {
@@ -40,52 +41,31 @@ func rechercherRoutes() {
 
 			minHpInt, errMin := strconv.Atoi(minHp)
 			maxHpInt, errMax := strconv.Atoi(maxHp)
-			fmt.Println(minHpInt, maxHpInt, err)
-			fmt.Println(err == nil && minHp != "" && maxHp == "")
-			fmt.Println(err == nil && minHp == "" && maxHp != "")
-			fmt.Println(err == nil && minHp != "" && maxHp != "")
-			if errMin == nil && minHp != "" && maxHp == "" {
-				for _, item := range data.Data {
-					hpItemInt, hpErr := strconv.Atoi(item.Hp)
-					if hpErr != nil {
-						fmt.Println(hpErr)
-					}
-					fmt.Println(hpItemInt, minHpInt)
-					if hpItemInt >= minHpInt {
+			degMinInt, errDeg := strconv.Atoi(degMin)
 
-						dataTemp.Data = append(dataTemp.Data, item)
-					}
-				}
-			} else if errMax == nil && minHp == "" && maxHp != "" {
-				fmt.Print(1)
-				for _, item := range data.Data {
-					hpItemInt, hpErr := strconv.Atoi(item.Hp)
-					if hpErr != nil {
-						fmt.Println(hpErr)
-					}
-					fmt.Println(hpItemInt, maxHpInt)
-					if hpItemInt <= maxHpInt {
+			for _, item := range data.Data {
 
-						dataTemp.Data = append(dataTemp.Data, item)
+				hpItemInt, _ := strconv.Atoi(item.Hp)
+				var dgItemInt int
+				var errDegItem error = fmt.Errorf("Not")
+				if len(item.Attacks) > 0 {
+					dgItemInt, errDegItem = strconv.Atoi(item.Attacks[0].Damage)
+					if errDegItem != nil {
+						fmt.Println("2")
+						fmt.Println(errDegItem)
 					}
 				}
 
-			} else if errMin == nil && errMax == nil && minHp != "" && maxHp != "" {
-				for _, item := range data.Data {
-					hpItemInt, hpErr := strconv.Atoi(item.Hp)
-					if hpErr != nil {
-						fmt.Println(hpErr)
-					}
-					fmt.Println(hpItemInt, maxHpInt)
-					if hpItemInt <= maxHpInt && hpItemInt >= minHpInt {
+				filtreHpMin := minHp == "" || (errMin == nil && minHpInt <= hpItemInt)
+				filtreHpMax := maxHp == "" || (errMax == nil && maxHpInt >= hpItemInt)
+				filtreDegMin := degMin == "" || (errDeg == nil && degMinInt <= dgItemInt)
+				fmt.Println(degMinInt, dgItemInt, filtreDegMin)
 
-						dataTemp.Data = append(dataTemp.Data, item)
-					}
+				if filtreHpMin && filtreHpMax && filtreDegMin {
+					dataTemp.Data = append(dataTemp.Data, item)
 				}
-			} else {
-				fmt.Print(2)
-				dataTemp = data
 			}
+
 		}
 		templates.Temp.ExecuteTemplate(w, "rechercher", dataTemp)
 	})
