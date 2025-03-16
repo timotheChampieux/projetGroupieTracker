@@ -2,10 +2,9 @@
 
 ## 📝 Description
 
-Décrivez brièvement votre projet ici :
 
 - **Thème** : Site web exploitant une API Pokémon
-- **Objectif** : Recherchez n'importe quel Pokémon ou n'importe quel set depuis l'existence du jeu de cartes !
+- **Objectif** : Recherchez n'importe quel Pokémon ou n'importe quel set depuis l'existence du jeu de carts !
 - **Fonctionnalités principales** :
   - Recherchez n'importe quel carte 
   - Explorer tout les sets
