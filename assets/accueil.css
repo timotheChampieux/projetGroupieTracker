@@ -59,15 +59,21 @@ body {
 }
 
 .footer {
-    text-align: right; /* Aligne le texte vers la droite */
-    margin-right: 25%; /* Décale le texte vers le centre en partant du bord droit */
+    text-align: right; 
+    margin-right: 25%; 
     padding: 10px 0;
     color: white;
+    text-decoration: none;
 }
 
-/* Barre de recherche */
-/* Barre de recherche */
-
+.footer  a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+.footer  a:hover{
+    text-decoration: underline;
+}
 
 
 #recherche{
@@ -217,4 +223,42 @@ body {
 
 .nav-buttons a:hover {
     background-color: #FFA500;
+}
+
+.content1 h2 {
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+}
+
+.content1 h3 {
+    margin-top: 20px;
+    font-size: 18px;
+    color: red;
+}
+
+.content1 h4 {
+    margin-top: 15px;
+    font-size: 16px;
+    color: red;
+}
+
+.content1 p {
+    margin-left: 20px;
+    line-height: 1.6;
+}
+
+.content1 {
+    background-color: rgba(0, 0, 0, 0.4);
+  
+}
+
+footer {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: #333;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
 }

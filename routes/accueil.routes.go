@@ -125,3 +125,9 @@ func CardsBySetRoutes() {
 	})
 
 }
+
+func ProposRoutes() {
+	http.HandleFunc("/propos", func(w http.ResponseWriter, r *http.Request) {
+		templates.Temp.ExecuteTemplate(w, "propos", nil)
+	})
+}
